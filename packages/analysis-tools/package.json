@@ -8,8 +8,8 @@
     "sca": "bin/index.js"
   },
   "scripts": {
-    "dev": "NODE_ENV=development rollup -c --watch",
-    "build": "NODE_ENV=production rollup -c"
+    "dev": "cross-env NODE_ENV=development rollup -c --watch",
+    "build": "cross-env NODE_ENV=production rollup -c"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.8",
