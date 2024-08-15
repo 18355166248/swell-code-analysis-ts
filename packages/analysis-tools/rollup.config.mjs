@@ -1,13 +1,16 @@
-import resolve from "@rollup/plugin-node-resolve";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import json from "@rollup/plugin-json";
 import del from "rollup-plugin-delete";
 
 const plugins = [
-  resolve(),
+  nodeResolve({
+    exportConditions: ["node"], // add node option here,
+    preferBuiltins: false,
+  }),
   commonjs(),
-  babel({ babelHelpers: "runtime" }),
+  babel({ babelHelpers: "bundled" }),
   json(), // 使用 JSON 插件
 ];
 
@@ -21,7 +24,7 @@ export default [
     plugins: [del({ targets: ["dist/*"] }), ...plugins],
   },
   {
-    input: "src/sca.ts",
+    input: "src/sca.mts",
     output: {
       file: "bin/index.js",
       format: "cjs",

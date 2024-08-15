@@ -7,5 +7,5 @@ program
   .command("analysis")
   .description("analysis code and echo report")
   .action(async () => {
-    console.log(chalk.blue("analysis code and echo report"));
+    chalk.blue("analysis code and echo report");
   });
